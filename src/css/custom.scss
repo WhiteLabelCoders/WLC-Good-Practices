@@ -32,3 +32,18 @@ html[data-theme="dark"] {
         }
     }
 }
+
+// Mobile menu
+@media all and (max-width: 996px) {
+    .menu__link,
+    .navbar-sidebar__back {
+        color: #fff;
+
+        &:hover {
+            color: #fff;
+        }
+    }
+    .menu__link--active:not(.menu__link--sublist) {
+        background-color: #000;
+    }
+}
