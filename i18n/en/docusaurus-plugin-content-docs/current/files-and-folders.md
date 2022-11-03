@@ -2,60 +2,60 @@
 sidebar_position: 2
 ---
 
-# Pliki i foldery
+# Files and folders
 
 ## /acf
-Tutaj automatycznie w pliku ```.json``` zostaną zapisane zdefiniowane pola z ** ACF PRO ** i zaimportowane podczas pobierania zmian z repozytorium.
+Defined fields from ACF PRO will be saved in the ```.json``` file here automatically - and imported when downloading changes from the repository.
 
 ## /assets
-Folder w którym wprowadzasz wszystkie zmiany.
+Catalogue, where you make all the changes.
 
--- fonts - tutaj umieszczaj ładowane fonty.
+-- fonts - place all downloaded fonts here
 
--- images - tutaj umieszczaj grafiki będące częścią integralną strony
+-- images - put here graphics that are an integral part of the page
 
--- js - tutaj umieszczaj skrypty
+-- js - place your scripts here
 
--- scss - tutaj umieszczaj wszystkie style
+-- scss - put all styles here
 
--- svg - tutaj umieszczaj pliki svg będące integralną częścią strony
+-- svg - put here any svg files that are an integral part of the page
 
--- vendors - tutaj umieszczaj zewnętrzne biblioteki, których używasz na stronie
+-- vendors - place here all external libraries, that you use on the website
 
 ## /dist
-Tutaj umieszczane są wszystkie pliki wynikowe, które są ładowane właśnie z tego miejsca na stronie.
+All output files that are loaded from this place should be put here
 
-:::caution Uwaga
-Nie wprowadzaj zmian w tym folderze.
+:::caution WARNING
+Do not make changes in this folder.
 :::
 
 ## /inc
-Tutaj znajdują się wszystkie pliki php w których będziesz wprowadzał zmiany.
+Here are all the php files which you will edit.
 
--- Blocks - folder w którym będziesz umieszczał wszystkie bloki (np. bloki Gutenberga)
+-- Blocks - catalogue where you will put all blocks (e.g. Gutenberg blocks)
 
--- Components - folder w którym będziesz umieszczał wszystkie komponenty (np. header, footer)
+-- Components - catalogue where you will put all components (e.g. header, footer)
 
--- Core - tutaj będziesz wprowadzał zmiany ogólne np. dotyczące ustawień theme jeżeli zajdzie taka potrzeba
+-- Core - here you will make general changes, e.g. the theme settings, if necessary
 
--- Views - tutaj będziesz wprowadzał zmiany dotyczące widoków np. dla strony głównej, bloga, strony itd.
+-- Views - here you will make changes to views, e.g. for the home page, blog, page, etc.
 
 ## /footer.php
-Tutaj znajduje się layout dla footer.
+Here is the footer layout.
 
 ## /header.php
-Tutaj znajduje się layout dla header.
+Here is the layout for the header.
 
 ## /index.php
-Tutaj znajduje się główny layout strony.
+Here is the main page layout.
 
 ## /sidebar.php
-Tutaj znajduje się główny layout dla sidebar jeżeli używasz.
+Here is the main layout for the sidebar if you use it.
 
 ## /theme.json.dist
-Ten plik odpowiada za customowe style po stronie admina. Jeżeli chcesz zdefiniować swoje własne ustawienia po stronie admina do wyboru np. dla domyślnych kolorów,
-fontów to rób to w tym pliku. Pamiętaj, że musisz ten plik skopiować lub zmienić mu nazwę na ```theme.json```.
-Więcej na temat możliwości tego pliku znajdziesz tutaj:
+This file is responsible for custom styles on the admin side. If you want to define your own settings on the admin side to choose from e.g. 
+default colors, fonts, do it in this file. Remember that you have to copy this file or rename it to ```theme.json.``` 
+You can find more about the capabilities of this file here:
 
 https://developer.wordpress.org/block-editor/reference-guides/theme-json-reference/theme-json-living/
 
