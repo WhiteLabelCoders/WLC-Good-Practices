@@ -25,7 +25,15 @@ const config = {
   // to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'pl',
-    locales: ['pl'],
+    locales: ['pl', 'en'],
+    localeConfigs: {
+      pl: {
+        htmlLang: 'pl-PL',
+      },
+      en: {
+        htmlLang: 'en-GB',
+      },
+    },
   },
 
   presets: [
@@ -59,6 +67,10 @@ const config = {
           {
             href: 'https://github.com/WhiteLabelCoders/wlc-starter',
             label: 'GitHub',
+            position: 'right',
+          },
+          {
+            type: 'localeDropdown',
             position: 'right',
           },
         ],
