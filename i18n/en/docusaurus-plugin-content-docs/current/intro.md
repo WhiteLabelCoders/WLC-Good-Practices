@@ -5,7 +5,7 @@ sidebar_position: 1
 
 # General information
 
-** WLC Starter ** documentation.
+** Versa WP WordPress Starter Template ** documentation.
 
 ## Features
 

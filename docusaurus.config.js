@@ -9,7 +9,7 @@ const config = {
   title: 'WLC Starter - Documentation',
   tagline: 'Wordpress WLC starter documentation',
   url: 'https://github.com/WhiteLabelCoders',
-  baseUrl: '/wlc-starter/',
+  baseUrl: '/Versa-WP-WordPress-Starter-Template/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.png',
@@ -17,7 +17,7 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'WhiteLabelCoders', // Usually your GitHub org/user name.
-  projectName: 'wlc-starter', // Usually your repo name.
+  projectName: 'Versa-WP-WordPress-Starter-Template', // Usually your repo name.
   deploymentBranch: 'documentation',
 
   // Even if you don't use internalization, you can use this field to set useful
@@ -65,7 +65,7 @@ const config = {
         },
         items: [
           {
-            href: 'https://github.com/WhiteLabelCoders/wlc-starter',
+            href: 'https://github.com/WhiteLabelCoders/Versa-WP-WordPress-Starter-Template',
             label: 'GitHub',
             position: 'right',
           },

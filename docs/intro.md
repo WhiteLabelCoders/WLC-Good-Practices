@@ -5,7 +5,7 @@ sidebar_position: 1
 
 # Informacje ogólne
 
-Dokumentacja ** WLC Starter **. Wersja angielska w przygotowaniu.
+Dokumentacja ** Versa WP WordPress Starter Template **.
 
 ## Cechy
 
