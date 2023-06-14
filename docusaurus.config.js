@@ -6,10 +6,10 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'WLC Starter - Documentation',
-  tagline: 'Wordpress WLC starter documentation',
+  title: 'WLC Good Practices',
+  tagline: 'Wordpress WLC good practices',
   url: 'https://github.com/WhiteLabelCoders',
-  baseUrl: '/Versa-WP-WordPress-Starter-Template/',
+  baseUrl: '/WLC-Good_Practices/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.png',
@@ -17,7 +17,7 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'WhiteLabelCoders', // Usually your GitHub org/user name.
-  projectName: 'Versa-WP-WordPress-Starter-Template', // Usually your repo name.
+  projectName: 'WLC-Good_Practices', // Usually your repo name.
   deploymentBranch: 'documentation',
 
   // Even if you don't use internalization, you can use this field to set useful
