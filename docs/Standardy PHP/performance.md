@@ -80,7 +80,7 @@ Mimo to znajomość Object cache zdaje się być dosyć niszowa lub temat nie je
 
 #### Non-persistent vs persistent
 
-Domyślnie, zapisywanie obiektów w pamięci RAM, bo to tam trzymane są dane, nie jest trwałe (non-persistent) i pozostają one w pamięci tylko i wyłącznie na czas trwania requesta, a więc przykładowo nie można wykorzystać zapisanych danych po załadowaniu innej strony. Taki non-persistent cache nie jest zatem aż tak użyteczny i ma ogranoczone zastosowanie.
+Domyślnie, zapisywanie obiektów w pamięci RAM, bo to tam trzymane są dane, nie jest trwałe (non-persistent) i pozostają one w pamięci tylko i wyłącznie na czas trwania requesta (tego konkretnego page loadu), a więc przykładowo nie można wykorzystać zapisanych danych po załadowaniu innej strony. Taki non-persistent cache nie jest zatem aż tak użyteczny i ma ogranoczone zastosowanie.
 
 **Twały zapisywanie obiektów w pamięci** możemy osiągnąć poprzez skonfigurowanie środowiska z trwałym mechanizmem cachowania (**persistent caching mechanism**), wykorzystującym np. Memcached, Redis lub inny system buforowania pamięci.
 
@@ -106,9 +106,11 @@ if ( false === $all_awesome_posts ) {
     $data = new WP_Query( array(
         'post_status' => 'publish',
     ) );
-
-    // Set object cache item
-    wp_cache_set( 'all_posts', $data, 'posts', 600 ); // cache item key, data, cache item group, expire value
+    
+    if ( ! is_wp_error( $data ) {
+        // Set object cache item
+        wp_cache_set( 'all_posts', $data, 'posts', 600 ); // cache item key, data, cache item group, expire value
+    }
 }
 
 // Use the data like you would have normally...
@@ -136,6 +138,46 @@ Od wersji Wordpressa 6.1 dostępne są nowe metody, jednak nie we wszystkich imp
 
 [Dokumentacja i funkcje z jakich powinniśmy korzystać](https://developer.wordpress.org/reference/classes/wp_object_cache/).
 
--- Dostępny rozmiar pamięci RAM to 1MB, ma to swoje ograniczenia
-
 -- Klasa `WP_Object_Cache` pozwala na dodawanie, usuwanie, a nawet podmieniania danych. Pozwala na gropowanie zcachowanych danych oraz zarządzanie grupami.
+
+-- Napisany kod nie powinien zakładać, że obiekt istnieje. Zawsze należy się upewnić, że tak jest i być gotowym na wygenerowanie obiektu.
+
+-- Zcachowany w pamięci obiekt może wygasnąć po zadanym mu czasie `expire`, jeżeli czas ten nie został zadany, to powinniśmy sami zadbać o zregenerowanie cacha.
+
+-- W przypadku customowych relacji pomiędzy treściami, przykładowo mamy wystawiony customowy endpoint API, który chcemy cachować, a który korzysta z danych z jakiegoś post typu, powinniśmy wdrożyć **mechanizm purgowania lub podmieniania zawartości cacha** po updacie danego wpisu. Sprawdzonym rozwiązaniem będzie tutaj podpięcie się pod hook `wp_after_insert_post`, który jest wykonywany wystarczająco późno.
+
+````php
+// Hook into action
+add_action( 'wp_after_insert_post', 'my_awesome_purge_mechanism', 10, 1 );
+
+// Logic for cache purging
+function my_awesome_purge_mechanism( $post_id ) {
+    // Always check if cached object exists
+    $my_endpoint_data = wp_cache_get( 'my_endpoint_data', 'posts' ); // cache item key, cache item group
+    
+    // If it exists, we can replace data stored in cache to make sure data is up-to-date
+    if ( false !== $my_endpoint_data ) {
+        // Request data
+        $data = wp_remote_get( get_rest_url( null, '/wp/v2/my_awesome_endpoint/' . $post_id ) );
+    
+        if ( ! is_wp_error( $data ) {
+            // Replace data within object cache item
+            wp_cache_replace( 'my_endpoint_data', $data, 'posts', 600 ); // cache item key, data, cache item group, expire value
+        }
+    } else {
+        // Request data
+        $data = wp_remote_get( get_rest_url( null, '/wp/v2/my_awesome_endpoint/' . $post_id ) );
+        
+        if ( ! is_wp_error( $data ) {
+            // Set cache item as it was not created yet
+            wp_cache_set( 'my_endpoint_data', $data, 'posts', 600 ); // cache item key, data, cache item group, expire value
+        }
+    }
+}
+````
+
+:::warning
+
+Zapytania o zewnętrzne zasoby po API zawsze powinny być cachowane.
+
+:::
