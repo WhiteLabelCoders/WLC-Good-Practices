@@ -144,6 +144,8 @@ $sql = $wpdb->prepare(
 $results = $wpdb->get_results( $sql, ARRAY_A );
 ```
 
+Inne przydatne funkcje: `esc_sql`,  `esc_like`.
+
 ## Nonces
 
 Noncje to narzędzie pozwalające uniknąć ataków typu CSRF lub cross-site request forgery. 
