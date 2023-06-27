@@ -13,14 +13,12 @@ sidebar_position: 4
 -- Precyzyjnie wskazuj jakie posty chcesz wyciągnąć z bazy:
 
 ````php
-<?php
 // Query for 500 published posts of certain post type.
 new WP_Query( array(
   'posts_per_page' => 500,
   'post_type'      => 'my_awesome_post_type'
   'post_status'    => 'publish'
 ));
-?>
 ````
 
 -- Jeżeli potrzebujesz tylko listę ID-ików postów, skorzystaj z `fields => ids`
@@ -46,23 +44,23 @@ Podczas tworzenia transienta możemy ustawić nazwę transienta, po której poź
 Przykład:
 
 ````php
-    // Always check if cached transient exists
-    $special_query_results = get_transient( 'special_query_results' )
+// Always check if cached transient exists
+$special_query_results = get_transient( 'special_query_results' )
+
+// If it exists, it will be ready to use
+// If false is returned, we need to set transient
+if ( false === $special_query_results ) {
+    // Request data
+    $special_query_results = new WP_Query( array(
+      'posts_per_page' => 500,
+      'post_type'      => 'my_awesome_post_type'
+      'post_status'    => 'publish'
+    ) );
     
-    // If it exists, it will be ready to use
-    // If false is returned, we need to set transient
-    if ( false === $special_query_results ) {
-        // Request data
-        $special_query_results = new WP_Query( array(
-          'posts_per_page' => 500,
-          'post_type'      => 'my_awesome_post_type'
-          'post_status'    => 'publish'
-        ) );
-        
-        // Set transient
-        set_transient( 'special_query_results', $special_query_results, 12 * HOUR_IN_SECONDS );
-    }
-    // Use the data like you would have normally...
+    // Set transient
+    set_transient( 'special_query_results', $special_query_results, 12 * HOUR_IN_SECONDS );
+}
+// Use the data like you would have normally...
 ````
 
 -- Możliwe jest stworzenie transienta, który nigdy nie wygaśnie, omijając parametr `$expiration`, jednak nie jest to zalecane gdyż takie transienty są autoloadowane na każdej podstronie, co może doprowadzić do spadku wydajności.
@@ -98,22 +96,22 @@ Domyślnie, zapisywanie obiektów w pamięci RAM, bo to tam trzymane są dane, n
 Zasada działania, jest podobna jak w Transientach:
 
 ````php
-    // Always check if cached object exists
-    $all_awesome_posts = wp_cache_get( 'all_posts', 'posts' ); // cache item key, cache item group
+// Always check if cached object exists
+$all_awesome_posts = wp_cache_get( 'all_posts', 'posts' ); // cache item key, cache item group
 
-    // If it exists, it will be ready to use
-    // If false is returned, we need to set the object
-    if ( false === $all_awesome_posts ) {
-        // Request data
-	    $data = new WP_Query( array(
-		    'post_status' => 'publish',
-	    ) );
+// If it exists, it will be ready to use
+// If false is returned, we need to set the object
+if ( false === $all_awesome_posts ) {
+    // Request data
+    $data = new WP_Query( array(
+        'post_status' => 'publish',
+    ) );
 
-        // Set object cache item
-	    wp_cache_set( 'all_posts', $data, 'posts', 600 ); // cache item key, data, cache item group, expire value
-    }
+    // Set object cache item
+    wp_cache_set( 'all_posts', $data, 'posts', 600 ); // cache item key, data, cache item group, expire value
+}
 
-    // Use the data like you would have normally...
+// Use the data like you would have normally...
 ````
 
 Dostępne metody:
