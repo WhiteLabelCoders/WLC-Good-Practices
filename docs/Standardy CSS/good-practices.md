@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Dobre prkatyki (S)CSS
+# Dobre praktyki (S)CSS
 
 ## DRY
 Pomaga w lepszym zarządzaniu kodem, co wpływa na jego utrzymanie - a przede wszystkim na rozmiar wynikowego pliku. 
