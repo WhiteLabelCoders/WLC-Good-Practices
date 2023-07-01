@@ -12,7 +12,7 @@ Na samym początku powinniśmy się zastanowić czy chcemy budować bloki jako o
 
 Pamiętajmy o tym, że jeżeli tworzymy plugin starajmy się pisać go w OOP, poniżej przykład rejestracji:
 
-```php
+```
 <?php
 /**
  * Plugin Name: WLC Blocks Boilerplate
@@ -33,7 +33,7 @@ Pamiętajmy o tym, że jeżeli tworzymy plugin starajmy się pisać go w OOP, po
 Kolejną rzeczą jest stworzenie package.json oraz odpowiedniej struktury katalogów.
 
 package.json
-
+```
 {
   "name": "wlc-blocks-boilerplate",
   "version": "1.0.0",
@@ -52,7 +52,7 @@ package.json
 }
 
 Następnie musimy zadeklarować plik o nazwie block.json, w którym zapiszemy najważniejsze informacje o bloku czyli jego nazwę oraz potrzebne atrybuty czy skrypty. Ważne jest aby umieszczać na samym początku deklaracji $schema, ponieważ będziemy mieli możliwość korzystania z podpowiedzi jakie elementy możemy zadeklarować, a jakich nie.
-
+```
 {
     "$schema": "https://schemas.wp.org/trunk/block.json",
     "apiVersion": 2,
@@ -129,7 +129,7 @@ W WLC rekomendujemy użycie DocBlocków, które mówią nam co dana funkcja przy
 
 Jeżeli zaciągamy pakiety z biblioteki WordPress powinniśmy oznaczać je w komentarzu, przykład:
 
-```javascript
+```
 /**
  * WordPress dependencies
  */
@@ -139,7 +139,7 @@ import { __ } from '@wordpress/i18n';
 
 Główną różnicą jest to, że podczas importowania plików wewnętrznych należy używać ścieżek względnych specyficznych dla katalogu najwyższego poziomu, w którym pracujesz. Jeżeli zaciągamy własne pakiety z plików powinniśmy oznaczać je jako internal w komentarzu, przykład:
 
-```javascript
+```
 /**
  * Internal dependencies
  */
@@ -149,7 +149,7 @@ import VisualEditor from '../visual-editor';
 
 Jeżeli importujesz zewnętrzną bibliotekę powinieneś oznaczyć ją w komentarzu jako External, przykład:
 
-```javascript
+```
 /**
  * External dependencies
  */
@@ -159,7 +159,7 @@ import moment from 'moment';
 
 Aby zarejestrować styl np. dla przycisku, bądź obrazka wystarczy że użyjesz tego fragmentu kodu:
 
-```javascript
+```
 import { registerBlockStyle } from '@wordpress/blocks';
 
 registerBlockStyle( 'core/image', {
@@ -171,7 +171,7 @@ registerBlockStyle( 'core/image', {
 
 Wyrejestrowywanie odbywa się w analogiczny sposób:
 
-```javascript
+```
 import { unregisterBlockStyle } from '@wordpress/blocks';
 
 unregisterBlockStyle( 'core/image', 'rounded' );
@@ -182,7 +182,7 @@ Jeżeli zachodzi potrzeba aby dodać do Twoich bloków jakąś dodatkową funkcj
 
 Jeżeli chcesz dodać nowy atrybut czy support dla bloku użyj:
 
-```javascript
+```
 blocks.registerBlockType
 import { addFilter } from '@wordpress/hooks';
 add_filter(
@@ -195,7 +195,7 @@ add_filter(
 
 Do dodawania niestandardowych elementów sterujących do paska narzędzi bloków lub paska bocznego ustawień użyj:
 
-```javascript
+```
 editor.BlockEdit
 import { addFilter } from '@wordpress/hooks';
 import { createHigherOrderComponent } from '@wordpress/compose';
@@ -210,7 +210,7 @@ add_filter(
 
 Aby dodać dodatkowe właściwości do wrappera w metodzie save użyj:
 
-```javascript
+```
 blocks.getSaveContent.extraProps
 import { addFilter } from '@wordpress/hooks';
 add_filter(
