@@ -29,6 +29,7 @@ Pamiętajmy o tym, że jeżeli tworzymy plugin starajmy się pisać go w OOP, po
  *
  * @package WLC_Blocks_Boilerplate
  */
+ ```
 
 Kolejną rzeczą jest stworzenie package.json oraz odpowiedniej struktury katalogów.
 
@@ -50,6 +51,7 @@ package.json
     "@wordpress/scripts": "^24.1.0"
   }
 }
+```
 
 Następnie musimy zadeklarować plik o nazwie block.json, w którym zapiszemy najważniejsze informacje o bloku czyli jego nazwę oraz potrzebne atrybuty czy skrypty. Ważne jest aby umieszczać na samym początku deklaracji $schema, ponieważ będziemy mieli możliwość korzystania z podpowiedzi jakie elementy możemy zadeklarować, a jakich nie.
 ```
@@ -95,6 +97,7 @@ Następnie musimy zadeklarować plik o nazwie block.json, w którym zapiszemy na
     "script": "file:./build/frontend.js",
     "style": "file:./build/frontend.css"
 }
+```
 
 @wordpress/scripts jest tak skonstruowany, że wymaga na nas odpowiedniej struktury czyli musimy mieć katalog src, w którym umieszczamy nasze pliki źródłowe dla bloków. Katalogi typu languages i css są opcjonalne, natomiast mocno rekomendowane przez WLC. Katalog build jest generowany automatycznie.
 
@@ -118,12 +121,14 @@ projekt
 
 W WLC rekomendujemy użycie DocBlocków, które mówią nam co dana funkcja przyjmuje i jakiego typu dane zwraca:
 
+```
 /**
 * Functional React Component to edit the block on the Gutenberg Editor
 *
 * @param {*} props - Block attributes
 * @returns {string} - The component html
 */
+```
 
 ## WordPress Dependencies
 
@@ -134,6 +139,7 @@ Jeżeli zaciągamy pakiety z biblioteki WordPress powinniśmy oznaczać je w kom
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+```
 
 ## Internal Dependencies
 
@@ -144,6 +150,7 @@ Główną różnicą jest to, że podczas importowania plików wewnętrznych nal
  * Internal dependencies
  */
 import VisualEditor from '../visual-editor';
+```
 
 ## External Dependencies
 
@@ -154,6 +161,7 @@ Jeżeli importujesz zewnętrzną bibliotekę powinieneś oznaczyć ją w komenta
  * External dependencies
  */
 import moment from 'moment';
+```
 
 ## Rejestracja stylu elementu dla bloku
 
@@ -166,6 +174,7 @@ registerBlockStyle( 'core/image', {
   name: 'rounded',
   label: 'Rounded',
 } );
+```
 
 ## Wyrejestrowanie stylu elementu dla bloku
 
@@ -175,6 +184,7 @@ Wyrejestrowywanie odbywa się w analogiczny sposób:
 import { unregisterBlockStyle } from '@wordpress/blocks';
 
 unregisterBlockStyle( 'core/image', 'rounded' );
+```
 
 ## Modyfikacja bloków za pomocą hooków
 
@@ -192,6 +202,7 @@ add_filter(
 	…
  }
 );
+```
 
 Do dodawania niestandardowych elementów sterujących do paska narzędzi bloków lub paska bocznego ustawień użyj:
 
@@ -206,7 +217,7 @@ add_filter(
 	…
  })
 );
-
+```
 
 Aby dodać dodatkowe właściwości do wrappera w metodzie save użyj:
 
@@ -220,3 +231,4 @@ add_filter(
 	…
  })
 );
+```
