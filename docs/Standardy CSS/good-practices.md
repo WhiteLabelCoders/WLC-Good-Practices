@@ -5,7 +5,7 @@ sidebar_position: 1
 # Dobre praktyki (S)CSS
 
 ## DRY
-Pomaga w lepszym zarządzaniu kodem, co wpływa na jego utrzymanie - a przede wszystkim na rozmiar wynikowego pliku. 
+`DRY - Don't Repeat Yourself` - celem tej zasady jest nie powtarzanie tych samych fragmentów kodu w wielu miejscach co pomaga w lepszym zarządzaniu kodem, co wpływa na jego utrzymanie - a przede wszystkim na rozmiar wynikowego pliku.
 
 ```html
 <button class="button button--primary">Przycisk</button>
@@ -13,8 +13,8 @@ Pomaga w lepszym zarządzaniu kodem, co wpływa na jego utrzymanie - a przede ws
 ```css
 .button {
   /* Wspólne style przycisków */
-  padding: 10px 20px;
-  border-radius: 4px;
+  padding: 0.625rem 1.125rem;
+  border-radius: 0.4rem;
   /* ... */
 }
 
@@ -209,7 +209,7 @@ border: 0.5rem solid #000;
   top: 0;
   left: 0;
   display: flex;
-  font-size: 16px;
+  font-size: 1rem;
 
   /* Wizualizacja */
   color: #000;
@@ -226,6 +226,29 @@ border: 0.5rem solid #000;
 ```
 
 Wyżej wskazany przykład kolejności deklaracji jest zgodny z obowiązującym modelem CSS Triggers - pokazującym jaki wpływ na performance i czas renderowania strony mają poszczególne atrybuty. [CSS Triggers](https://csstriggers.com/) oraz wtyczka do Visual Studio Code pomagająca w organizacji kodu css ze względu na kolejność deklaracji a przy tym opisująca ich znaczenie: [CSS Triggers VSC](https://marketplace.visualstudio.com/items?itemName=kisstkondoros.csstriggers). 
+
+- Jednostki stosowane w kodzie
+
+Należy uniać używania `PX` jako domyślnych jednostek miary w projektach. Preferowaną jednostką podstawową jest `REM (relative to font-size of the root element). Daje ona większa kontrolę nad skalowalnością kodu przy pracach z RWD. `REM` - wyznacza standardową wielkość fontu na stronie a co za tym idzie, przeliczenie wielkości wzgledem właśnie tej ustawione, dla przykładu:
+
+````css
+html {
+  font-size: 16px; /* standardowa jednostka dla przeglądarek co oznacza 1rem = 16px */
+}
+/* przykład */
+.paragraph {
+  font-size: 1rem; /* 16px */
+}
+
+/* lub przy zmianie */
+html {
+  font-size: 10px; /* wtedy 1rem = 10px */
+}
+
+.paragraph {
+  font-size: 1rem; /* 10px */
+}
+````
 
 ## Znaczenie properties w CSS
 
@@ -308,9 +331,11 @@ W kolejności od najbardziej obciążających procesor i jednocześnie wykonywan
 
 ## RWD - Media queries
 
-Responsive Web Design to potężne narzędzie do tworzenia widoków dla wszystkich urządzeń.
+`Responsive Web Design` to potężne narzędzie do tworzenia widoków dla wszystkich urządzeń.
 
-Tworząc kod (S)CSS należy pamiętać aby tworzyć go w pierwszej kolejności dla urządzeń mobilnych - ograniczając w ten sposób ilość kodu potrzebną do załadowania na mniejszych urządzeniach. Dlatego w pierwszej kolejności tworzymy kod który nie wymaga dodawania media queries.
+Tworząc kod CSS należy pamiętać aby tworzyć go w pierwszej kolejności dla urządzeń mobilnych `MOBILE FIRST` - ograniczając w ten sposób jego ilość potrzebną do załadowania na mniejszych urządzeniach. Dlatego w pierwszej kolejności tworzymy kod który nie wymaga dodawania media queries.
+
+`MOBILE FIRST` to podejście, w którym projektowanie i rozwijanie interfejsu użytkownika rozpoczyna się od wersji przeznaczonej dla urządzeń mobilnych.
 
 ```scss
 .box {
