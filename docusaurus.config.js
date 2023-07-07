@@ -8,8 +8,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'WLC Good Practices',
   tagline: 'Wordpress WLC good practices',
-  url: 'https://github.com/WhiteLabelCoders',
-  baseUrl: '/WLC-Good_Practices/',
+  url: 'https://whitelabelcoders.github.io',
+  baseUrl: '/WLC-Good-Practices/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.png',
@@ -17,7 +17,7 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'WhiteLabelCoders', // Usually your GitHub org/user name.
-  projectName: 'WLC-Good_Practices', // Usually your repo name.
+  projectName: 'WLC-Good-Practices', // Usually your repo name.
   deploymentBranch: 'documentation',
 
   // Even if you don't use internalization, you can use this field to set useful
