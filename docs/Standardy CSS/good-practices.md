@@ -229,7 +229,7 @@ Wyżej wskazany przykład kolejności deklaracji jest zgodny z obowiązującym m
 
 - Jednostki stosowane w kodzie
 
-Należy uniać używania `PX` jako domyślnych jednostek miary w projektach. Preferowaną jednostką podstawową jest `REM (relative to font-size of the root element). Daje ona większa kontrolę nad skalowalnością kodu przy pracach z RWD. `REM` - wyznacza standardową wielkość fontu na stronie a co za tym idzie, przeliczenie wielkości wzgledem właśnie tej ustawione, dla przykładu:
+Należy unikać używania `PX` jako domyślnych jednostek miary w projektach. Preferowaną jednostką podstawową jest `REM (relative to font-size of the root element). Daje ona większa kontrolę nad skalowalnością kodu przy pracach z RWD. `REM` - wyznacza standardową wielkość fontu na stronie a co za tym idzie, przeliczenie wielkości wzgledem właśnie tej ustawione, dla przykładu:
 
 ````css
 html {
